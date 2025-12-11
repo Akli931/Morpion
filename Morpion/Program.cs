@@ -1,4 +1,5 @@
-﻿
+﻿using System.Linq;
+
 
 // création du tableau 3 fois 3
 char[,] plateau = new char[3, 3]
@@ -14,7 +15,7 @@ char joueur = 'X'; // le joueur qui commence
 for (int tour = 0; tour < 9; tour++)
 {
     AfficherPlateau(plateau);
-    Console.WriteLine("Au tour du joueur {joueur}");
+    Console.WriteLine("Au tour du joueur "+joueur);
 
     int l, c;
 
@@ -26,6 +27,7 @@ for (int tour = 0; tour < 9; tour++)
         if (plateau[l, c] == ' ')
         {
             plateau[l, c] = joueur;
+
             break;
         }
         else
@@ -33,12 +35,17 @@ for (int tour = 0; tour < 9; tour++)
             Console.WriteLine("Cette case est déjà occupée !");
         }
     }
-
+    if (JoueurGagne(plateau, joueur))
+    {
+        AfficherPlateau(plateau);
+        Console.WriteLine("Le joueur "+ joueur +" a gagné !");
+        break;
+    }
     // Changer de joueur
     joueur = (joueur == 'X') ? 'O' : 'X';
 }
 
-AfficherPlateau(plateau);
+
 Console.WriteLine("Fin de la partie !");
 
 
@@ -107,4 +114,24 @@ void AfficherPlateau(char[,] p)
     return (ligne, colonne);
 }
 
+
+bool JoueurGagne(char[,]plateau, char joueur)
+{
+    bool ligneGagnante = Enumerable.Range(0, 3)
+        .Any(i => Enumerable.Range(0, 3)
+        .All(j=> plateau[i,j]== joueur));
+
+    bool colonneGagnante = Enumerable.Range(0, 3)
+    .Any(j => Enumerable.Range(0, 3)
+    .All(i => plateau[i, j] == joueur));
+
+    bool diag1 = Enumerable.Range(0, 3)
+        .All(i => plateau[i, i] == joueur);
+
+    bool diag2 = Enumerable.Range(0, 3)
+        .All(i => plateau[i, 2 - i] == joueur);
+
+    return (ligneGagnante || colonneGagnante || diag1 || diag2);
+
+}
 
