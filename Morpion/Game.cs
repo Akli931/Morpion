@@ -14,11 +14,30 @@ namespace Morpion
         public Game()
         {
             board = new Board();
-            playerX = new Player('X');
-            playerO = new Player('O');
 
-            currentPlayer = playerX; 
+            Console.WriteLine("Choisir le mode de jeu :");
+            Console.WriteLine("1 - Joueur vs Joueur");
+            Console.WriteLine("2 - Joueur vs Bot");
+            Console.Write("Votre choix : ");
+
+            string choice = Console.ReadLine() ?? "1";
+
+            if (choice == "2")
+            {
+                playerX = new HumanPlayer('X');
+                playerO = new BotPlayer('O');
+                Console.WriteLine("Mode sélectionné : Joueur vs Bot");
+            }
+            else
+            {
+                playerX = new HumanPlayer('X');
+                playerO = new HumanPlayer('O');
+                Console.WriteLine("Mode sélectionné : Joueur vs Joueur");
+            }
+
+            currentPlayer = playerX;
         }
+
 
 
         public void Start()
