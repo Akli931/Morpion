@@ -11,7 +11,8 @@ namespace Morpion
         public Player(char symbol)
         { this.Symbol = symbol; }
 
-        public (int row, int col) GetNextMove(Board board)
+        public record PlayerMove(int row, int column);
+        public PlayerMove GetNextMove(Board board)
         {
             int row;
             int col;
@@ -38,10 +39,12 @@ namespace Morpion
                     continue;
                 }
 
-                
-                return (row, col);
-            }
-        }
+                return new PlayerMove(row, col);
 
+            }
+
+
+        }
+                   
     }
 }

@@ -31,13 +31,12 @@ namespace Morpion
                 Console.WriteLine();
                 Console.WriteLine($"Au tour du joueur {currentPlayer.Symbol}");
 
-                
-                var (row, col) = currentPlayer.GetNextMove(board);
 
-                
-                board.PlayMove(row, col, currentPlayer.Symbol);
+                var move = currentPlayer.GetNextMove(board);
+                board.PlayMove(move.row, move.column, currentPlayer.Symbol);
 
-               
+
+
                 if (board.IsGameWon(currentPlayer.Symbol))
                 {
                     board.DisplayBoard();
