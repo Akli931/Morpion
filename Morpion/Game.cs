@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Morpion
@@ -10,6 +11,7 @@ namespace Morpion
         private Player playerX;
         private Player playerO;
         private Player currentPlayer;
+        public Player? Winner { get; private set; }
 
         public Game()
         {
@@ -38,6 +40,13 @@ namespace Morpion
             currentPlayer = playerX;
         }
 
+        public Game(Player playerX, Player playerO)
+        {
+            board = new Board();
+            this.playerX = playerX;
+            this.playerO = playerO;
+            currentPlayer = playerX;
+        }
 
 
         public void Start()
@@ -58,13 +67,16 @@ namespace Morpion
 
                 if (board.IsGameWon(currentPlayer.Symbol))
                 {
+                    Winner = currentPlayer;   
+
                     board.DisplayBoard();
                     Console.WriteLine();
                     Console.WriteLine($" Le joueur {currentPlayer.Symbol} a gagné !");
                     break;
                 }
 
-                
+
+
                 if (board.IsDraw())
                 {
                     board.DisplayBoard();

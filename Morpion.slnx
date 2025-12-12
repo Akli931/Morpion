@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Morpion/Morpion.csproj" />
+  <Project Path="TestProjectMorpion/TestProjectMorpion.csproj" Id="a0d83608-95e0-403e-8606-17156471fe57" />
 </Solution>
