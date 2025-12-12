@@ -21,7 +21,7 @@ namespace Morpion
 
         public void DisplayBoard()
         {
-            Console.Clear();
+           
 
             for (int i = 0; i < 3; i++)
             {
