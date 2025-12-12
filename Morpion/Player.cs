@@ -17,6 +17,7 @@ namespace Morpion
 
         public record PlayerMove(int row, int column);
 
-        public abstract PlayerMove GetNextMove(Board board);
+        public abstract Task<PlayerMove> GetNextMoveAsync(Board board);
+
     }
 }

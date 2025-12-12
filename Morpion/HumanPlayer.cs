@@ -10,7 +10,7 @@ namespace Morpion
         {
         }
 
-        public override PlayerMove GetNextMove(Board board)
+        public override Task<PlayerMove> GetNextMoveAsync(Board board)
         {
             int row;
             int col;
@@ -35,7 +35,8 @@ namespace Morpion
                     continue;
                 }
 
-                return new PlayerMove(row, col);
+                return Task.FromResult(new PlayerMove(row, col));
+
             }
         }
     }

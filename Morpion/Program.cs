@@ -1,6 +1,5 @@
 ﻿using Morpion;
 
 Game game = new Game();
-game.Start();
-
+await game.StartAsync();
 Console.ReadLine();
