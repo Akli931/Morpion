@@ -49,7 +49,7 @@ namespace Morpion
         }
 
 
-        public void Start()
+        public async Task StartAsync()
         {
             while (true)
             {
@@ -60,7 +60,8 @@ namespace Morpion
                 Console.WriteLine($"Au tour du joueur {currentPlayer.Symbol}");
 
 
-                var move = currentPlayer.GetNextMove(board);
+                var move = await currentPlayer.GetNextMoveAsync(board);
+
                 board.PlayMove(move.row, move.column, currentPlayer.Symbol);
 
 

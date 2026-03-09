@@ -13,9 +13,9 @@ namespace Morpion.Tests
             this.moves = new Queue<PlayerMove>(moves);
         }
 
-        public override PlayerMove GetNextMove(Board board)
+        public override Task<PlayerMove> GetNextMoveAsync(Board board)
         {
-            return moves.Dequeue();
+            return Task.FromResult(moves.Dequeue());
         }
     }
 }

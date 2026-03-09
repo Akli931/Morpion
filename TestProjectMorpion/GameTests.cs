@@ -10,9 +10,11 @@ namespace TestProjectMorpion
     public class GameTests
     {
         [Fact]
-        public void GameShouldEndWhenPlayerXWins()
+    
+        public async Task GameShouldEndWhenPlayerXWins()
+
         {
-            
+
             var playerX = new FakePlayer('X', new[]
             {
                 new PlayerMove(0, 0),
@@ -28,8 +30,9 @@ namespace TestProjectMorpion
 
             var game = new Game(playerX, playerO);
 
-            
-            game.Start();
+
+            await game.StartAsync();
+
 
 
             Assert.NotNull(game.Winner);

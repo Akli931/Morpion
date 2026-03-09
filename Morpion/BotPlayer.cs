@@ -11,10 +11,10 @@ namespace Morpion
         {
         }
 
-        public override PlayerMove GetNextMove(Board board)
+        public override async Task<PlayerMove> GetNextMoveAsync(Board board)
         {
             Console.WriteLine($"Le bot {Symbol} est en train de jouer...");
-
+            await Task.Delay(3000);
 
             var emptyCells =
                 from row in Enumerable.Range(0, 3)
