@@ -83,7 +83,22 @@ namespace Morpion
             return plateau.Cast<char>().All(c => c != ' ');
         }
 
+        public string GetBoardState()
+        {
+            var sb = new System.Text.StringBuilder();
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    sb.Append(plateau[i, j]);
+            return sb.ToString();
+        }
 
+        public void LoadBoardState(string state)
+        {
+            int k = 0;
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    plateau[i, j] = state[k++];
+        }
 
     }
 }
